@@ -1,11 +1,10 @@
-package gomo.hdhuu.com.gomo
+package gomo.hdhuu.com.gomo.presentation.home
 
-import android.arch.lifecycle.ViewModel
 import android.databinding.DataBindingUtil
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
 import android.util.Log
+import gomo.hdhuu.com.gomo.R
 import gomo.hdhuu.com.gomo.databinding.ActivityMainBinding
 import gomo.hdhuu.com.gomo.models.DemoViewModel
 import java.util.*
@@ -21,7 +20,7 @@ class MainActivity : AppCompatActivity() {
 
         Timer().schedule(3000) {
             Log.e("start", "statr")
-            viewModel!!.text.set("huuhoang deprai vui tinh")
+            viewModel!!.text.set("huuhoang deprzai vui tinh")
             viewModel.age.set(111)
             viewModel.buttonVisible.set(false)
         }
