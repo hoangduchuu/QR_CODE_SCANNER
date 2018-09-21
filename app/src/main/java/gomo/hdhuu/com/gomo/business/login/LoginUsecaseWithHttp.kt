@@ -1,7 +1,6 @@
-package gomo.hdhuu.com.gomo.business
+package gomo.hdhuu.com.gomo.business.login
 
 import android.util.Log
-import gomo.hdhuu.com.gomo.business.LoginUsacase
 import javax.inject.Inject
 
 /**

@@ -1,4 +1,4 @@
-package gomo.hdhuu.com.gomo.business
+package gomo.hdhuu.com.gomo.business.login
 
 import javax.inject.Named
 

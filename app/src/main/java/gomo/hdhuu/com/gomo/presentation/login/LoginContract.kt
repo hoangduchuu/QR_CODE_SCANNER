@@ -2,9 +2,9 @@ package gomo.hdhuu.com.gomo.presentation.login
 
 import dagger.Provides
 import dagger.Subcomponent
-import gomo.hdhuu.com.gomo.business.LoginUsacase
-import gomo.hdhuu.com.gomo.business.LoginUsecaseWithFirebase
-import gomo.hdhuu.com.gomo.business.LoginUsecaseWithHttp
+import gomo.hdhuu.com.gomo.business.login.LoginUsacase
+import gomo.hdhuu.com.gomo.business.login.LoginUsecaseWithFirebase
+import gomo.hdhuu.com.gomo.business.login.LoginUsecaseWithHttp
 import gomo.hdhuu.com.gomo.di.ActivityScope
 import gomo.hdhuu.com.gomo.presentation.base.BasePresenter
 import gomo.hdhuu.com.gomo.presentation.base.BaseView

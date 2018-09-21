@@ -1,6 +1,6 @@
 package gomo.hdhuu.com.gomo.presentation.login
 
-import gomo.hdhuu.com.gomo.business.LoginUsacase
+import gomo.hdhuu.com.gomo.business.login.LoginUsacase
 import gomo.hdhuu.com.gomo.utils.MAIN_API
 import javax.inject.Inject
 import javax.inject.Named
