@@ -9,8 +9,9 @@ import javax.inject.Named
  * Created by hoangduchuuvn@gmail.com on 9/22/18 .
  */
 class LoginPresenter @Inject constructor(@param:Named(MAIN_API) private val login: LoginUsacase) : LoginContract.Presenter {
-
-    override fun gotoMainPage() {
-        login.login("x", "y")
+    override fun doLogin(userName: String, password: String) {
+        login.login(userName, password)
     }
+
+
 }

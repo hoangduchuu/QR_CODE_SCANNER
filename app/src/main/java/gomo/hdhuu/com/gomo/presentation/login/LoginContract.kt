@@ -17,11 +17,12 @@ import javax.inject.Named
  */
 interface LoginContract {
     interface View : BaseView {
-        fun doLogin(userName: String, password: String)
+        fun gotoMainPage()
+
     }
 
     interface Presenter : BasePresenter {
-        fun gotoMainPage()
+        fun doLogin(userName: String, password: String)
     }
 
 
