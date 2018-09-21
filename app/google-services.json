@@ -1,0 +1,99 @@
+{
+  "project_info": {
+    "project_number": "760263658183",
+    "firebase_url": "https://o-001-0707-shopfirebase.firebaseio.com",
+    "project_id": "o-001-0707-shopfirebase",
+    "storage_bucket": "o-001-0707-shopfirebase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:760263658183:android:23d2f4dd435536f5",
+        "android_client_info": {
+          "package_name": "com.example.hoang.o0010707shopfirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "760263658183-jhfcvieijhpfeuo6akpepik3ngath4ej.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hoang.o0010707shopfirebase",
+            "certificate_hash": "5b1a37880c3ff9ee8dae4b66ffc71c852777940e"
+          }
+        },
+        {
+          "client_id": "760263658183-g8931pnh5c5liabjoqn2tams9l6nghvs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAjWwf4gG-CJd87I_KYFGu-E-QFKfE8Fg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "760263658183-g8931pnh5c5liabjoqn2tams9l6nghvs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:760263658183:android:c4f5d1e149257310",
+        "android_client_info": {
+          "package_name": "gomo.hdhuu.com.gomo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "760263658183-fpjsakjir93cphvjed4d6t42hca1h94f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "gomo.hdhuu.com.gomo",
+            "certificate_hash": "a31a8c0e0888cf99483f8d8442be7a11952f87de"
+          }
+        },
+        {
+          "client_id": "760263658183-g8931pnh5c5liabjoqn2tams9l6nghvs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAjWwf4gG-CJd87I_KYFGu-E-QFKfE8Fg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "760263658183-g8931pnh5c5liabjoqn2tams9l6nghvs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
