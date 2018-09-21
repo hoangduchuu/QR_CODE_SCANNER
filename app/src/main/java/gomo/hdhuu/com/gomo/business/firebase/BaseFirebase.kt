@@ -10,7 +10,7 @@ import com.google.firebase.storage.StorageReference
 /**
  * Created by hoangduchuuvn@gmail.com on 9/22/18 .
  */
-class BaseUsecase {
+open class BaseFirebase {
     val TAG = this.javaClass.simpleName
     protected val mAuth: FirebaseAuth
     protected val mFireDB: FirebaseDatabase
