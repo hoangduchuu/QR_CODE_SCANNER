@@ -8,6 +8,6 @@ import javax.inject.Inject
  */
 class LoginUsecaseWithFirebase @Inject constructor() : LoginUsacase {
     override fun login(user: String, password: String) {
-        Log.e("loginDo", "called")
+        Log.e("loginDo", "LoginUsecaseWithFirebase")
     }
 }
