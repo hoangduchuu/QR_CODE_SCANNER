@@ -5,6 +5,8 @@ import dagger.Subcomponent
 import gomo.hdhuu.com.gomo.business.login.LoginUsacase
 import gomo.hdhuu.com.gomo.business.login.LoginUsecaseWithFirebase
 import gomo.hdhuu.com.gomo.business.login.LoginUsecaseWithHttp
+import gomo.hdhuu.com.gomo.business.sample.RatingUsecase
+import gomo.hdhuu.com.gomo.business.sample.RatingUsecaseWithFirebase
 import gomo.hdhuu.com.gomo.di.ActivityScope
 import gomo.hdhuu.com.gomo.presentation.base.BasePresenter
 import gomo.hdhuu.com.gomo.presentation.base.BaseView
@@ -51,6 +53,10 @@ interface LoginContract {
         @Provides
         @Named(USE_API_FROM_HTTP)
         fun provideUsecaseWithHttp(usecase: LoginUsecaseWithHttp): LoginUsacase = usecase
+
+        @ActivityScope
+        @Provides
+        fun provideRating(usecas: RatingUsecaseWithFirebase): RatingUsecase = usecas
 
     }
 
