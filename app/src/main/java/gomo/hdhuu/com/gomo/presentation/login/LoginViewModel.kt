@@ -8,11 +8,6 @@ import android.databinding.ObservableField
  */
 class LoginViewModel {
     val buttonVisible = ObservableBoolean(true)
-    val text = ObservableField("Data binding works!")
-    val age = ObservableField(1)
+    val status = ObservableField("status be over here")
 
-    fun buttonClicked() {
-        text.set("Button clicked!")
-        age.set(age.get()!! + 1)
-    }
 }

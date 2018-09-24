@@ -1,32 +1,40 @@
-<?xml version="1.0" encoding="utf-8"?>
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
-	android:id="@+id/vRootView"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	android:fitsSystemWindows="true"
-	android:orientation="vertical"
-	android:paddingBottom="20dp"
-	android:paddingLeft="30dp"
-	android:paddingRight="30dp"
-	android:paddingTop="20dp">
-	
-	<EditText
-		android:id="@+id/tvUser"
+	xmlns:tools="http://schemas.android.com/tools">
+	<data>
+		<import type="android.view.View"/>
+		<variable
+			name="vm"
+			type="gomo.hdhuu.com.gomo.presentation.login.LoginViewModel"/>
+	</data>
+	<LinearLayout
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:hint="@string/user" />
-	
-	<EditText
-		android:id="@+id/tvPassword"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:hint="@string/password" />
-	
-	<Button
-		android:id="@+id/btnLogin"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:text="@string/login" />
-</LinearLayout>
+		android:layout_height="match_parent"
+		android:orientation="vertical">
+		
+		<EditText
+			android:id="@+id/tvUser"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:hint="@string/user" />
+		
+		<EditText
+			android:id="@+id/tvPassword"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:hint="@string/password" />
+		
+		<Button
+			android:id="@+id/btnLogin"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="@{vm.status}" />
+		
+		<TextView
+			tools:text="xxxx"
+			android:id="@+id/tvStatus"
+			android:text="@{vm.status}"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content" />
+	</LinearLayout>
+</layout>

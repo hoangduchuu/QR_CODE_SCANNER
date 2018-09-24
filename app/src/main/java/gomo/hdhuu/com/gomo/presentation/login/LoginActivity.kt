@@ -1,12 +1,17 @@
 package gomo.hdhuu.com.gomo.presentation.login
 
+import android.databinding.DataBindingUtil
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import butterknife.ButterKnife
 import butterknife.OnClick
 import gomo.hdhuu.com.gomo.GomoApp
 import gomo.hdhuu.com.gomo.R
+import gomo.hdhuu.com.gomo.databinding.ActivityLoginBinding
+import gomo.hdhuu.com.gomo.databinding.ActivityMainBinding
+import gomo.hdhuu.com.gomo.models.DemoViewModel
 import gomo.hdhuu.com.gomo.presentation.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_login.*
 import javax.inject.Inject
@@ -16,6 +21,10 @@ import javax.inject.Inject
  */
 class LoginActivity : BaseActivity(), LoginContract.View {
     val TAG = this.javaClass.simpleName
+    var mBinding: ActivityLoginBinding? = null
+
+    @Inject
+    lateinit var mViewModel: LoginViewModel
 
 
     override fun gotoMainPage() {
@@ -28,6 +37,10 @@ class LoginActivity : BaseActivity(), LoginContract.View {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.e("LoginActivity-z", mPresenter.toString())
+
+        // binding
+        btnLogin.setOnClickListener { doLogin() }
+
     }
 
     override fun showDialog(msg: String) {
@@ -41,10 +54,11 @@ class LoginActivity : BaseActivity(), LoginContract.View {
 
 
     override fun initializeView(savedInstanceState: Bundle?) {
-        setContentView(R.layout.activity_login)
+        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_login)
+        ButterKnife.bind(this, mBinding!!.root)
+
     }
 
-    @OnClick(R.id.btnLogin)
     fun doLogin() {
         // todo remove log
         Log.e(TAG, "login clicked")
@@ -55,6 +69,8 @@ class LoginActivity : BaseActivity(), LoginContract.View {
         (application as GomoApp).component
                 .plus(LoginContract.Module(this))
                 .inject(this)
+        mBinding?.vm = mViewModel
+
 
     }
 

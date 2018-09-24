@@ -1,10 +1,10 @@
 package gomo.hdhuu.com.gomo.presentation.login
 
+import com.google.firebase.auth.AuthResult
 import dagger.Provides
 import dagger.Subcomponent
 import gomo.hdhuu.com.gomo.business.login.LoginUsacase
 import gomo.hdhuu.com.gomo.business.login.LoginUsecaseWithFirebase
-import gomo.hdhuu.com.gomo.business.login.LoginUsecaseWithHttp
 import gomo.hdhuu.com.gomo.business.sample.RatingUsecase
 import gomo.hdhuu.com.gomo.business.sample.RatingUsecaseWithFirebase
 import gomo.hdhuu.com.gomo.di.ActivityScope
@@ -47,16 +47,20 @@ interface LoginContract {
         @ActivityScope
         @Provides
         @Named(USE_API_FROM_FIREBASE)
-        fun provideUsecaseWithFirebase(usecase: LoginUsecaseWithFirebase): LoginUsacase = usecase
+        fun provideUsecaseWithFirebase(usecase: LoginUsecaseWithFirebase): LoginUsacase<AuthResult> = usecase
 
-        @ActivityScope
-        @Provides
-        @Named(USE_API_FROM_HTTP)
-        fun provideUsecaseWithHttp(usecase: LoginUsecaseWithHttp): LoginUsacase = usecase
+//        @ActivityScope
+//        @Provides
+//        @Named(USE_API_FROM_HTTP)
+//        fun provideUsecaseWithHttp(usecase: LoginUsecaseWithHttp): LoginUsacase = usecase
 
         @ActivityScope
         @Provides
         fun provideRating(usecas: RatingUsecaseWithFirebase): RatingUsecase = usecas
+
+        @ActivityScope
+        @Provides
+        fun provideViewMode() = LoginViewModel()
 
     }
 
