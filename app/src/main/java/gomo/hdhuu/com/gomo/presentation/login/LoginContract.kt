@@ -24,6 +24,7 @@ import javax.inject.Named
 interface LoginContract {
     interface View : BaseView {
         fun gotoMainPage()
+        fun onLoginErrors(msg: String)
 
     }
 

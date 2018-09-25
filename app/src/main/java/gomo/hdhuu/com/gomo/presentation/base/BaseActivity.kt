@@ -25,10 +25,11 @@ abstract class BaseActivity : AppCompatActivity() {
     protected abstract fun injectDependencies()
 
 
-    fun showloadingwithMsg(msg: String?, title: String?, type: Int, cancellable: Boolean = false) {
-        if (dialog == null) {
-            dialog = SweetAlertDialog(this, type)
+    fun showLoadingMessage(msg: String?, title: String?, cancellable: Boolean = false) {
+        if (dialog != null && dialog!!.isShowing) {
+            dialog?.dismiss()
         }
+        dialog = SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE)
         dialog?.setCancelable(cancellable)
         dialog?.titleText = title
         dialog?.contentText = msg
@@ -36,10 +37,44 @@ abstract class BaseActivity : AppCompatActivity() {
 
     }
 
-    fun showloadingwithMsg(msg: String?, title: String?, type: Int) {
-        if (dialog == null) {
-            dialog = SweetAlertDialog(this, type)
+    fun showLoadingMessage(msg: String?, title: String?) {
+        if (dialog != null && dialog!!.isShowing) {
+            dialog?.dismiss()
         }
+        dialog = SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE)
+        dialog?.titleText = title
+        dialog?.contentText = msg
+        dialog?.show()
+
+    }
+
+    fun showErrorMessage(msg: String?, title: String?) {
+        if (dialog != null && dialog!!.isShowing) {
+            dialog?.dismiss()
+        }
+        dialog = SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
+        dialog?.titleText = title
+        dialog?.contentText = msg
+        dialog?.show()
+
+    }
+
+    fun showSussessMessages(msg: String?, title: String?) {
+        if (dialog != null && dialog!!.isShowing) {
+            dialog?.dismiss()
+        }
+        dialog = SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE)
+        dialog?.titleText = title
+        dialog?.contentText = msg
+        dialog?.show()
+
+    }
+
+    fun showWarningMessage(msg: String?, title: String?) {
+        if (dialog != null && dialog!!.isShowing) {
+            dialog?.dismiss()
+        }
+        dialog = SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
         dialog?.titleText = title
         dialog?.contentText = msg
         dialog?.show()
@@ -47,10 +82,10 @@ abstract class BaseActivity : AppCompatActivity() {
     }
 
     fun showLoading(msg: String?, title: String?) {
-        if (dialog == null) {
-            dialog = SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE)
+        if (dialog != null && dialog!!.isShowing) {
+            dialog?.dismiss()
         }
-
+        dialog = SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE)
         dialog?.setTitleText(title)
         dialog?.setContentText(msg)
         dialog?.show()
@@ -58,9 +93,10 @@ abstract class BaseActivity : AppCompatActivity() {
     }
 
     fun showLoading() {
-        if (dialog == null) {
-            dialog = SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE)
+        if (dialog != null && dialog!!.isShowing) {
+            dialog?.dismiss()
         }
+        dialog = SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE)
         dialog?.titleText = getString(R.string.loading)
         dialog?.setContentText("")
         dialog?.show()
@@ -68,7 +104,7 @@ abstract class BaseActivity : AppCompatActivity() {
 
     fun hideLoading() {
         if (dialog != null) {
-            dialog?.hide()
+            dialog?.dismissWithAnimation()
         }
     }
 

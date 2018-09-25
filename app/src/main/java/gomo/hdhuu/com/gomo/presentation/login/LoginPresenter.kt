@@ -1,5 +1,6 @@
 package gomo.hdhuu.com.gomo.presentation.login
 
+import android.annotation.SuppressLint
 import com.google.firebase.auth.AuthResult
 import gomo.hdhuu.com.gomo.business.login.LoginParams
 import gomo.hdhuu.com.gomo.business.login.LoginUsacase
@@ -25,15 +26,25 @@ constructor(@param:Named(MAIN_API) private val login: LoginUsacase<LoginParams, 
     @Inject
     lateinit var view: LoginContract.View
 
+    @SuppressLint("CheckResult")
     override fun doLogin(userName: String, password: String) {
         view.showLoading()
         viewModel.status.set("loading")
         login.buildUseCaseObservable(LoginParams(userName, password))
-                .doFinally{view.hideLoading()}
+                .doFinally {
+                }
                 .subscribe(
-                        { it -> viewModel.status.set("OKKKK") }
-                        , { throwables -> viewModel.status.set(throwables.localizedMessage) }
-                        , { view.hideLoading() })
+                        { it ->
+                            viewModel.status.set("OKKKK")
+                            view.hideLoading()
+                            view.gotoMainPage()
+                        }
+                        , { throwables ->
+                    viewModel.status.set(throwables.localizedMessage)
+                    view.onLoginErrors(throwables.localizedMessage)
+
+                }
+                )
 
 
     }

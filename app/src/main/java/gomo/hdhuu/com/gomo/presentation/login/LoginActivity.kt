@@ -22,6 +22,10 @@ import javax.inject.Inject
  * Created by hoangduchuuvn@gmail.com on 9/22/18 .
  */
 class LoginActivity : BaseActivity(), LoginContract.View {
+    override fun onLoginErrors(msg: String) {
+        showErrorMessage(msg,getString(R.string.login_falied))
+    }
+
     val TAG = this.javaClass.simpleName
     var mBinding: ActivityLoginBinding? = null
 
