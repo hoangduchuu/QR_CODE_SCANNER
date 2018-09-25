@@ -1,10 +1,15 @@
 package gomo.hdhuu.com.gomo.presentation.login
 
+import com.google.firebase.auth.AuthResult
 import dagger.Provides
 import dagger.Subcomponent
+import gomo.hdhuu.com.gomo.business.login.LoginParams
 import gomo.hdhuu.com.gomo.business.login.LoginUsacase
 import gomo.hdhuu.com.gomo.business.login.LoginUsecaseWithFirebase
 import gomo.hdhuu.com.gomo.business.login.LoginUsecaseWithHttp
+import gomo.hdhuu.com.gomo.business.sample.RatingParams
+import gomo.hdhuu.com.gomo.business.sample.RatingUsecase
+import gomo.hdhuu.com.gomo.business.sample.RatingUsecaseWithFirebase
 import gomo.hdhuu.com.gomo.di.ActivityScope
 import gomo.hdhuu.com.gomo.presentation.base.BasePresenter
 import gomo.hdhuu.com.gomo.presentation.base.BaseView
@@ -17,11 +22,12 @@ import javax.inject.Named
  */
 interface LoginContract {
     interface View : BaseView {
-        fun doLogin(userName: String, password: String)
+        fun gotoMainPage()
+
     }
 
     interface Presenter : BasePresenter {
-        fun gotoMainPage()
+        fun doLogin(userName: String, password: String)
     }
 
 
@@ -44,12 +50,20 @@ interface LoginContract {
         @ActivityScope
         @Provides
         @Named(USE_API_FROM_FIREBASE)
-        fun provideUsecaseWithFirebase(usecase: LoginUsecaseWithFirebase): LoginUsacase = usecase
+        fun provideUsecaseWithFirebase(usecase: LoginUsecaseWithFirebase): LoginUsacase<LoginParams, AuthResult> = usecase
 
         @ActivityScope
         @Provides
         @Named(USE_API_FROM_HTTP)
-        fun provideUsecaseWithHttp(usecase: LoginUsecaseWithHttp): LoginUsacase = usecase
+        fun provideUsecaseWithHttp(usecase: LoginUsecaseWithHttp): LoginUsacase<LoginParams, String> = usecase
+
+        @ActivityScope
+        @Provides
+        fun provideRating(usecas: RatingUsecaseWithFirebase): RatingUsecase<RatingParams, String> = usecas
+
+        @ActivityScope
+        @Provides
+        fun provideViewMode() = LoginViewModel()
 
     }
 

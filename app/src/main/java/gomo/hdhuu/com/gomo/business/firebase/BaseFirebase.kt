@@ -6,11 +6,12 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import io.reactivex.Observable
 
 /**
  * Created by hoangduchuuvn@gmail.com on 9/22/18 .
  */
-open class BaseFirebase {
+abstract class BaseFirebase {
     val TAG = this.javaClass.simpleName
     protected val mAuth: FirebaseAuth
     protected val mFireDB: FirebaseDatabase
@@ -40,6 +41,7 @@ open class BaseFirebase {
     protected fun getParkingRef(ownerUuid: String, parkingUuid: String, fileName: String): StorageReference {
         return rootStorageRef.child(ownerUuid).child(parkingUuid).child(fileName)
     }
+
 
 
 }

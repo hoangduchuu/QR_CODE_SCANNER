@@ -1,22 +1,46 @@
 package gomo.hdhuu.com.gomo.presentation.login
 
+import android.databinding.DataBindingUtil
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
+import butterknife.ButterKnife
+import butterknife.OnClick
 import gomo.hdhuu.com.gomo.GomoApp
 import gomo.hdhuu.com.gomo.R
+import gomo.hdhuu.com.gomo.databinding.ActivityLoginBinding
+import gomo.hdhuu.com.gomo.databinding.ActivityMainBinding
+import gomo.hdhuu.com.gomo.models.DemoViewModel
 import gomo.hdhuu.com.gomo.presentation.base.BaseActivity
+import kotlinx.android.synthetic.main.activity_login.*
 import javax.inject.Inject
 
 /**
  * Created by hoangduchuuvn@gmail.com on 9/22/18 .
  */
 class LoginActivity : BaseActivity(), LoginContract.View {
+    val TAG = this.javaClass.simpleName
+    var mBinding: ActivityLoginBinding? = null
+
+    @Inject
+    lateinit var mViewModel: LoginViewModel
+
+
+    override fun gotoMainPage() {
+        Toast.makeText(applicationContext, "xxx", Toast.LENGTH_LONG).show()
+    }
+
     @Inject
     lateinit var mPresenter: LoginContract.Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.e("LoginActivity-z", mPresenter.toString())
+
+        // binding
+        btnLogin.setOnClickListener { doLogin() }
+
     }
 
     override fun showDialog(msg: String) {
@@ -28,18 +52,26 @@ class LoginActivity : BaseActivity(), LoginContract.View {
     override fun showDialog(title: String, msg: String, cancelable: Boolean) {
     }
 
-    override fun doLogin(userName: String, password: String) {
-    }
 
     override fun initializeView(savedInstanceState: Bundle?) {
-        setContentView(R.layout.activity_main)
+        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_login)
+        ButterKnife.bind(this, mBinding!!.root)
+
+    }
+
+    fun doLogin() {
+        // todo remove log
+        Log.e(TAG, "login clicked")
+        mPresenter.doLogin(tvUser.text.trim().toString(), tvPassword.text.trim().toString())
     }
 
     override fun injectDependencies() {
         (application as GomoApp).component
                 .plus(LoginContract.Module(this))
                 .inject(this)
-        mPresenter.gotoMainPage()
+        mBinding?.vm = mViewModel
+
+
     }
 
 }
