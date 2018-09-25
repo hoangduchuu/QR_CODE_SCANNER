@@ -43,15 +43,6 @@ class LoginActivity : BaseActivity(), LoginContract.View {
 
     }
 
-    override fun showDialog(msg: String) {
-    }
-
-    override fun showDialog(title: String, msg: String) {
-    }
-
-    override fun showDialog(title: String, msg: String, cancelable: Boolean) {
-    }
-
 
     override fun initializeView(savedInstanceState: Bundle?) {
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_login)

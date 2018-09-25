@@ -22,13 +22,19 @@ constructor(@param:Named(MAIN_API) private val login: LoginUsacase<LoginParams, 
 
     @Inject
     lateinit var viewModel: LoginViewModel
-
+    @Inject
+    lateinit var view: LoginContract.View
 
     override fun doLogin(userName: String, password: String) {
+        view.showLoading()
         viewModel.status.set("loading")
         login.buildUseCaseObservable(LoginParams(userName, password))
-                .subscribe({ it -> viewModel.status.set("OKKKK") },
-                        { throwables -> viewModel.status.set(throwables.localizedMessage) })
+                .doFinally{view.hideLoading()}
+                .subscribe(
+                        { it -> viewModel.status.set("OKKKK") }
+                        , { throwables -> viewModel.status.set(throwables.localizedMessage) }
+                        , { view.hideLoading() })
+
 
     }
 

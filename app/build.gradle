@@ -67,6 +67,9 @@ dependencies {
 //    implementation 'com.google.firebase:firebase-core:16.0.3'
 
 // required dependency: rxjava2
+    // beauty dialog
+    implementation 'com.github.thomper:sweet-alert-dialog:v1.4.0'
+
 
 }
 
