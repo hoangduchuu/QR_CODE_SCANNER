@@ -11,7 +11,7 @@ import gomo.hdhuu.com.gomo.R
 import gomo.hdhuu.com.gomo.databinding.ActivityLoginBinding
 import gomo.hdhuu.com.gomo.presentation.base.BaseActivity
 import gomo.hdhuu.com.gomo.presentation.login.register.RegisterFragment
-import gomo.hdhuu.com.gomo.presentation.mainfeature.HomeActivity
+import gomo.hdhuu.com.gomo.presentation.mainfeature.root.HomeActivity
 import kotlinx.android.synthetic.main.activity_login.*
 import javax.inject.Inject
 
