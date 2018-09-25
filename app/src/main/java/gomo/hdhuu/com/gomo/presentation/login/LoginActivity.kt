@@ -43,9 +43,6 @@ class LoginActivity : BaseActivity(), LoginContract.View {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.e("LoginActivity-z", mPresenter.toString())
-
-        // binding
         btnLogin.setOnClickListener { doLogin() }
         btnRegister.setOnClickListener { openRegister() }
 
@@ -63,8 +60,6 @@ class LoginActivity : BaseActivity(), LoginContract.View {
     }
 
     fun doLogin() {
-        // todo remove log
-        Log.e(TAG, "login clicked")
         mPresenter.doLogin(tvUser.text.trim().toString(), tvPassword.text.trim().toString())
     }
 
