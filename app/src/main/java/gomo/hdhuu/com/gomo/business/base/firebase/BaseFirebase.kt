@@ -1,4 +1,4 @@
-package gomo.hdhuu.com.gomo.business.firebase
+package gomo.hdhuu.com.gomo.business.base.firebase
 
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -6,7 +6,6 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
-import io.reactivex.Observable
 
 /**
  * Created by hoangduchuuvn@gmail.com on 9/22/18 .

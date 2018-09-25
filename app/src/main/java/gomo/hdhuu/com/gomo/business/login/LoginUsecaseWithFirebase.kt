@@ -3,7 +3,7 @@ package gomo.hdhuu.com.gomo.business.login
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.database.*
 import durdinapps.rxfirebase2.RxFirebaseAuth
-import gomo.hdhuu.com.gomo.business.firebase.BaseFirebase
+import gomo.hdhuu.com.gomo.business.base.firebase.BaseFirebase
 import gomo.hdhuu.com.gomo.models.Rating
 import io.reactivex.*
 import javax.inject.Inject
