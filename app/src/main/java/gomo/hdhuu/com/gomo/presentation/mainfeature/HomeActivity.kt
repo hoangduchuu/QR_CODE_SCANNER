@@ -7,7 +7,7 @@ import gomo.hdhuu.com.gomo.presentation.base.BaseActivity
 /**
  * Created by hoangduchuuvn@gmail.com on 9/26/18 .
  */
-class GomoActivity : BaseActivity() {
+class HomeActivity : BaseActivity() {
     override fun initializeView(savedInstanceState: Bundle?) {
         setContentView(R.layout.activity_home_app)
     }
