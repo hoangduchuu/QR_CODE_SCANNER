@@ -29,3 +29,8 @@ private inline fun FragmentManager.transact(action: FragmentTransaction.() -> Un
     }.commit()
 }
 
+fun AppCompatActivity.removeFragmentInActivity(fragment: Fragment, frameId: Int) {
+    supportFragmentManager.transact {
+        remove(fragment)
+    }
+}

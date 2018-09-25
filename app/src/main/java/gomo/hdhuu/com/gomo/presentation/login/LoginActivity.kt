@@ -1,5 +1,6 @@
 package gomo.hdhuu.com.gomo.presentation.login
 
+import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.os.Bundle
@@ -14,6 +15,7 @@ import gomo.hdhuu.com.gomo.databinding.ActivityLoginBinding
 import gomo.hdhuu.com.gomo.databinding.ActivityMainBinding
 import gomo.hdhuu.com.gomo.models.DemoViewModel
 import gomo.hdhuu.com.gomo.presentation.base.BaseActivity
+import gomo.hdhuu.com.gomo.presentation.home.MainActivity
 import gomo.hdhuu.com.gomo.presentation.login.register.RegisterFragment
 import kotlinx.android.synthetic.main.activity_login.*
 import javax.inject.Inject
@@ -23,7 +25,7 @@ import javax.inject.Inject
  */
 class LoginActivity : BaseActivity(), LoginContract.View {
     override fun onLoginErrors(msg: String) {
-        showErrorMessage(msg,getString(R.string.login_falied))
+        showErrorMessage(msg, getString(R.string.login_falied))
     }
 
     val TAG = this.javaClass.simpleName
@@ -36,6 +38,10 @@ class LoginActivity : BaseActivity(), LoginContract.View {
 
     override fun gotoMainPage() {
         Toast.makeText(applicationContext, "xxx", Toast.LENGTH_LONG).show()
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
+
     }
 
     @Inject
@@ -68,8 +74,6 @@ class LoginActivity : BaseActivity(), LoginContract.View {
                 .plus(LoginContract.Module(this))
         component?.inject(this)
         mBinding?.vm = mViewModel
-
-
     }
 
 }

@@ -6,4 +6,5 @@
 	<string name="loading">loading</string>
 	<string name="register">regíter</string>
 	<string name="login_falied">Login failed</string>
+	<string name="register_error">register Error</string>
 </resources>
