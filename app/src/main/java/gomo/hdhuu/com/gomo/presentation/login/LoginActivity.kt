@@ -74,6 +74,7 @@ class LoginActivity : BaseActivity(), LoginContract.View {
                 .plus(LoginContract.Module(this))
         component?.inject(this)
         mBinding?.vm = mViewModel
+        mPresenter.checkUserLogged()
     }
 
 }

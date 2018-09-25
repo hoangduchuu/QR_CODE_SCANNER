@@ -4,6 +4,8 @@ import com.google.firebase.auth.AuthResult
 import dagger.Provides
 import dagger.Subcomponent
 import gomo.hdhuu.com.gomo.business.accouting.AccountParams
+import gomo.hdhuu.com.gomo.business.accouting.checkUserlogin.CheckLoginUsacase
+import gomo.hdhuu.com.gomo.business.accouting.checkUserlogin.CheckLoginUsecaseWithFirebase
 import gomo.hdhuu.com.gomo.business.accouting.login.LoginUsacase
 import gomo.hdhuu.com.gomo.business.accouting.login.LoginUsecaseWithFirebase
 import gomo.hdhuu.com.gomo.business.accouting.login.LoginUsecaseWithHttp
@@ -31,6 +33,7 @@ interface LoginContract {
     interface Presenter : BasePresenter {
         fun doLogin(userName: String, password: String)
         fun gotoMainPage()
+        fun checkUserLogged()
     }
 
 
@@ -70,6 +73,10 @@ interface LoginContract {
         @ActivityScope
         @Provides
         fun provideViewMode() = LoginViewModel()
+
+        @ActivityScope
+        @Provides
+        fun providecheckUserLoginUsecae(usecas:CheckLoginUsecaseWithFirebase): CheckLoginUsacase = usecas
 
     }
 
