@@ -4,6 +4,7 @@ import android.content.Context
 import dagger.Provides
 import gomo.hdhuu.com.gomo.GomoApp
 import gomo.hdhuu.com.gomo.presentation.login.LoginContract
+import gomo.hdhuu.com.gomo.presentation.mainfeature.root.HomeContract
 import javax.inject.Singleton
 
 /**
@@ -14,6 +15,7 @@ interface ApplicationDI {
     @dagger.Component(modules = arrayOf(Module::class))
     interface Component {
         fun plus(module: LoginContract.Module): LoginContract.Component
+        fun plus(module: HomeContract.Module): HomeContract.Component
 
     }
 
