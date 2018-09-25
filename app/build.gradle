@@ -25,6 +25,27 @@ android {
     dataBinding {
         enabled = true
     }
+    flavorDimensions "gomo"
+
+    productFlavors{
+        demo{
+            dimension "gomo"
+            applicationId "gomo.hdhuu.com.gomo.demo"
+            versionNameSuffix "-demo"
+        }
+        paid{
+            dimension "gomo"
+            applicationId "gomo.hdhuu.com.gomo.paid"
+            versionNameSuffix "-paid"
+        }
+        production{
+            dimension "gomo"
+            applicationId "gomo.hdhuu.com.gomo"
+            versionNameSuffix "-production"
+
+        }
+    }
+
 }
 
 dependencies {
