@@ -17,6 +17,8 @@ import gomo.hdhuu.com.gomo.models.DemoViewModel
 import gomo.hdhuu.com.gomo.presentation.base.BaseActivity
 import gomo.hdhuu.com.gomo.presentation.home.MainActivity
 import gomo.hdhuu.com.gomo.presentation.login.register.RegisterFragment
+import gomo.hdhuu.com.gomo.presentation.main.HomeAppActivity
+import gomo.hdhuu.com.gomo.presentation.mainfeature.GomoActivity
 import kotlinx.android.synthetic.main.activity_login.*
 import javax.inject.Inject
 
@@ -38,7 +40,7 @@ class LoginActivity : BaseActivity(), LoginContract.View {
 
     override fun gotoMainPage() {
         Toast.makeText(applicationContext, "xxx", Toast.LENGTH_LONG).show()
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, GomoActivity::class.java)
         startActivity(intent)
         finish()
 
