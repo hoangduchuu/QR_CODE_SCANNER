@@ -61,7 +61,8 @@ abstract class BaseActivity : AppCompatActivity() {
         if (dialog == null) {
             dialog = SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE)
         }
-        dialog?.setContentText(getString(R.string.loading))
+        dialog?.titleText = getString(R.string.loading)
+        dialog?.setContentText("")
         dialog?.show()
     }
 

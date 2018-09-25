@@ -13,6 +13,7 @@ import gomo.hdhuu.com.gomo.business.sample.RatingUsecaseWithFirebase
 import gomo.hdhuu.com.gomo.di.ActivityScope
 import gomo.hdhuu.com.gomo.presentation.base.BasePresenter
 import gomo.hdhuu.com.gomo.presentation.base.BaseView
+import gomo.hdhuu.com.gomo.presentation.login.register.RegisterContract
 import gomo.hdhuu.com.gomo.utils.USE_API_FROM_FIREBASE
 import gomo.hdhuu.com.gomo.utils.USE_API_FROM_HTTP
 import javax.inject.Named
@@ -35,6 +36,9 @@ interface LoginContract {
     @Subcomponent(modules = [Module::class])
     interface Component {
         fun inject(activity: LoginActivity)
+
+        fun plus(module: RegisterContract.Module): RegisterContract.Component
+
     }
 
     @dagger.Module

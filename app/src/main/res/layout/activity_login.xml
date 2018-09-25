@@ -1,40 +1,60 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools">
+	
 	<data>
-		<import type="android.view.View"/>
+		
+		<import type="android.view.View" />
+		
 		<variable
 			name="vm"
-			type="gomo.hdhuu.com.gomo.presentation.login.LoginViewModel"/>
+			type="gomo.hdhuu.com.gomo.presentation.login.LoginViewModel" />
 	</data>
-	<LinearLayout
+	
+	<FrameLayout
+		android:id="@+id/container"
 		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:orientation="vertical">
 		
-		<EditText
-			android:id="@+id/tvUser"
+		android:layout_height="match_parent">
+		
+		<LinearLayout
 			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:hint="@string/user" />
-		
-		<EditText
-			android:id="@+id/tvPassword"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:hint="@string/password" />
-		
-		<Button
-			android:id="@+id/btnLogin"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:text="@{vm.status}" />
-		
-		<TextView
-			tools:text="xxxx"
-			android:id="@+id/tvStatus"
-			android:text="@{vm.status}"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content" />
-	</LinearLayout>
+			android:layout_height="match_parent"
+			android:orientation="vertical">
+			
+			<EditText
+				android:id="@+id/tvUser"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:hint="@string/user" />
+			
+			<EditText
+				android:id="@+id/tvPassword"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:hint="@string/password" />
+			
+			<Button
+				android:id="@+id/btnLogin"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@{vm.status}" />
+			
+			<TextView
+				android:id="@+id/tvStatus"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@{vm.status}"
+				tools:text="xxxx" />
+			
+			<Button
+				android:id="@+id/btnRegister"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/register" />
+		</LinearLayout>
+	
+	
+	</FrameLayout>
+
 </layout>

@@ -7,12 +7,14 @@ import android.util.Log
 import android.widget.Toast
 import butterknife.ButterKnife
 import butterknife.OnClick
+import com.hnam.mvvm.replaceFragmentInActivity
 import gomo.hdhuu.com.gomo.GomoApp
 import gomo.hdhuu.com.gomo.R
 import gomo.hdhuu.com.gomo.databinding.ActivityLoginBinding
 import gomo.hdhuu.com.gomo.databinding.ActivityMainBinding
 import gomo.hdhuu.com.gomo.models.DemoViewModel
 import gomo.hdhuu.com.gomo.presentation.base.BaseActivity
+import gomo.hdhuu.com.gomo.presentation.login.register.RegisterFragment
 import kotlinx.android.synthetic.main.activity_login.*
 import javax.inject.Inject
 
@@ -25,6 +27,7 @@ class LoginActivity : BaseActivity(), LoginContract.View {
 
     @Inject
     lateinit var mViewModel: LoginViewModel
+    var component: LoginContract.Component? = null
 
 
     override fun gotoMainPage() {
@@ -40,7 +43,12 @@ class LoginActivity : BaseActivity(), LoginContract.View {
 
         // binding
         btnLogin.setOnClickListener { doLogin() }
+        btnRegister.setOnClickListener { openRegister() }
 
+    }
+
+    private fun openRegister() {
+        this.replaceFragmentInActivity(RegisterFragment(), R.id.container)
     }
 
 
@@ -57,9 +65,9 @@ class LoginActivity : BaseActivity(), LoginContract.View {
     }
 
     override fun injectDependencies() {
-        (application as GomoApp).component
+        component = (application as GomoApp).component
                 .plus(LoginContract.Module(this))
-                .inject(this)
+        component?.inject(this)
         mBinding?.vm = mViewModel
 
 
