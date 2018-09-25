@@ -1,5 +1,6 @@
 package gomo.hdhuu.com.gomo.presentation.login
 
+import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.os.Bundle
@@ -7,12 +8,15 @@ import android.util.Log
 import android.widget.Toast
 import butterknife.ButterKnife
 import butterknife.OnClick
+import com.hnam.mvvm.replaceFragmentInActivity
 import gomo.hdhuu.com.gomo.GomoApp
 import gomo.hdhuu.com.gomo.R
 import gomo.hdhuu.com.gomo.databinding.ActivityLoginBinding
 import gomo.hdhuu.com.gomo.databinding.ActivityMainBinding
 import gomo.hdhuu.com.gomo.models.DemoViewModel
 import gomo.hdhuu.com.gomo.presentation.base.BaseActivity
+import gomo.hdhuu.com.gomo.presentation.home.MainActivity
+import gomo.hdhuu.com.gomo.presentation.login.register.RegisterFragment
 import kotlinx.android.synthetic.main.activity_login.*
 import javax.inject.Inject
 
@@ -20,15 +24,24 @@ import javax.inject.Inject
  * Created by hoangduchuuvn@gmail.com on 9/22/18 .
  */
 class LoginActivity : BaseActivity(), LoginContract.View {
+    override fun onLoginErrors(msg: String) {
+        showErrorMessage(msg, getString(R.string.login_falied))
+    }
+
     val TAG = this.javaClass.simpleName
     var mBinding: ActivityLoginBinding? = null
 
     @Inject
     lateinit var mViewModel: LoginViewModel
+    var component: LoginContract.Component? = null
 
 
     override fun gotoMainPage() {
         Toast.makeText(applicationContext, "xxx", Toast.LENGTH_LONG).show()
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
+
     }
 
     @Inject
@@ -36,20 +49,13 @@ class LoginActivity : BaseActivity(), LoginContract.View {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.e("LoginActivity-z", mPresenter.toString())
-
-        // binding
         btnLogin.setOnClickListener { doLogin() }
+        btnRegister.setOnClickListener { openRegister() }
 
     }
 
-    override fun showDialog(msg: String) {
-    }
-
-    override fun showDialog(title: String, msg: String) {
-    }
-
-    override fun showDialog(title: String, msg: String, cancelable: Boolean) {
+    private fun openRegister() {
+        this.replaceFragmentInActivity(RegisterFragment(), R.id.container)
     }
 
 
@@ -60,18 +66,14 @@ class LoginActivity : BaseActivity(), LoginContract.View {
     }
 
     fun doLogin() {
-        // todo remove log
-        Log.e(TAG, "login clicked")
         mPresenter.doLogin(tvUser.text.trim().toString(), tvPassword.text.trim().toString())
     }
 
     override fun injectDependencies() {
-        (application as GomoApp).component
+        component = (application as GomoApp).component
                 .plus(LoginContract.Module(this))
-                .inject(this)
+        component?.inject(this)
         mBinding?.vm = mViewModel
-
-
     }
 
 }

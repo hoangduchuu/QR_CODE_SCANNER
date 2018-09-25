@@ -3,16 +3,17 @@ package gomo.hdhuu.com.gomo.presentation.login
 import com.google.firebase.auth.AuthResult
 import dagger.Provides
 import dagger.Subcomponent
-import gomo.hdhuu.com.gomo.business.login.LoginParams
-import gomo.hdhuu.com.gomo.business.login.LoginUsacase
-import gomo.hdhuu.com.gomo.business.login.LoginUsecaseWithFirebase
-import gomo.hdhuu.com.gomo.business.login.LoginUsecaseWithHttp
+import gomo.hdhuu.com.gomo.business.accouting.AccountParams
+import gomo.hdhuu.com.gomo.business.accouting.login.LoginUsacase
+import gomo.hdhuu.com.gomo.business.accouting.login.LoginUsecaseWithFirebase
+import gomo.hdhuu.com.gomo.business.accouting.login.LoginUsecaseWithHttp
 import gomo.hdhuu.com.gomo.business.sample.RatingParams
 import gomo.hdhuu.com.gomo.business.sample.RatingUsecase
 import gomo.hdhuu.com.gomo.business.sample.RatingUsecaseWithFirebase
 import gomo.hdhuu.com.gomo.di.ActivityScope
 import gomo.hdhuu.com.gomo.presentation.base.BasePresenter
 import gomo.hdhuu.com.gomo.presentation.base.BaseView
+import gomo.hdhuu.com.gomo.presentation.login.register.RegisterContract
 import gomo.hdhuu.com.gomo.utils.USE_API_FROM_FIREBASE
 import gomo.hdhuu.com.gomo.utils.USE_API_FROM_HTTP
 import javax.inject.Named
@@ -23,11 +24,13 @@ import javax.inject.Named
 interface LoginContract {
     interface View : BaseView {
         fun gotoMainPage()
+        fun onLoginErrors(msg: String)
 
     }
 
     interface Presenter : BasePresenter {
         fun doLogin(userName: String, password: String)
+        fun gotoMainPage()
     }
 
 
@@ -35,6 +38,9 @@ interface LoginContract {
     @Subcomponent(modules = [Module::class])
     interface Component {
         fun inject(activity: LoginActivity)
+
+        fun plus(module: RegisterContract.Module): RegisterContract.Component
+
     }
 
     @dagger.Module
@@ -50,12 +56,12 @@ interface LoginContract {
         @ActivityScope
         @Provides
         @Named(USE_API_FROM_FIREBASE)
-        fun provideUsecaseWithFirebase(usecase: LoginUsecaseWithFirebase): LoginUsacase<LoginParams, AuthResult> = usecase
+        fun provideUsecaseWithFirebase(usecase: LoginUsecaseWithFirebase): LoginUsacase<AccountParams, AuthResult> = usecase
 
         @ActivityScope
         @Provides
         @Named(USE_API_FROM_HTTP)
-        fun provideUsecaseWithHttp(usecase: LoginUsecaseWithHttp): LoginUsacase<LoginParams, String> = usecase
+        fun provideUsecaseWithHttp(usecase: LoginUsecaseWithHttp): LoginUsacase<AccountParams, String> = usecase
 
         @ActivityScope
         @Provides

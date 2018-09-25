@@ -1,0 +1,49 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools">
+	
+	<data>
+		
+		<import type="android.view.View" />
+		
+		<variable
+			name="vm"
+			type="gomo.hdhuu.com.gomo.presentation.login.LoginViewModel" />
+		
+		<variable
+			name="parenPresenter"
+			type="gomo.hdhuu.com.gomo.presentation.login.LoginContract.Presenter" />
+	</data>
+	
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="@color/colorAccent"
+		android:orientation="vertical">
+		
+		<EditText
+			android:id="@+id/tvUser"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:hint="@string/user" />
+		
+		<EditText
+			android:id="@+id/tvPassword"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:hint="@string/password" />
+		
+		<Button
+			android:id="@+id/btnSubmitRegister"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="@{vm.status}" />
+		
+		<TextView
+			android:id="@+id/tvStatus"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@{vm.status}"
+			tools:text="xxxx" />
+	</LinearLayout>
+</layout>

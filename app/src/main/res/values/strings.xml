@@ -3,4 +3,8 @@
 	<string name="user">user</string>
 	<string name="password">password</string>
 	<string name="login">login</string>
+	<string name="loading">loading</string>
+	<string name="register">regíter</string>
+	<string name="login_falied">Login failed</string>
+	<string name="register_error">register Error</string>
 </resources>
