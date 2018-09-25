@@ -20,6 +20,16 @@ import javax.inject.Inject
  * Created by hoangduchuuvn@gmail.com on 9/25/18 .
  */
 class RegisterFragment : BaseFragment(), RegisterContract.View {
+    override fun injectDependencies() {
+        if (activity is LoginActivity) {
+            (activity as LoginActivity).component
+                    ?.plus(RegisterContract.Module(this))
+                    ?.inject(this)
+            mBinding?.vm = mViewModel
+            mBinding?.parenPresenter = parentPresenter
+        }
+    }
+
     override fun onRegisterFailed(msg: String) {
         showErrorMessage(msg, getString(R.string.register_error))
     }
@@ -35,26 +45,14 @@ class RegisterFragment : BaseFragment(), RegisterContract.View {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_register, container, false)
-           return mBinding?.root
+        return mBinding?.root
     }
 
 
     override fun onRegisterSuccess() {
-    parentPresenter.gotoMainPage()
+        parentPresenter.gotoMainPage()
     }
 
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        if (activity is LoginActivity) {
-            (activity as LoginActivity).component
-                    ?.plus(RegisterContract.Module(this))
-                    ?.inject(this)
-            mBinding?.vm = mViewModel
-            mBinding?.parenPresenter = parentPresenter
-        }
-        ButterKnife.bind(this, view)
-    }
 
     @OnClick(R.id.btnSubmitRegister)
     fun onRegisterCliked() {
