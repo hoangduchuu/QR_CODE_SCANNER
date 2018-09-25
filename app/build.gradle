@@ -80,17 +80,7 @@ dependencies {
 
     // rxfirebase
     implementation 'com.github.FrangSierra:RxFirebase:1.5.0'
-//    implementation project(':RxFirebase')
-// firebase-database
-//    implementation 'com.androidhuman.rxfirebase2:firebase-database-kotlin:16.0.1.2'
-//    implementation 'com.androidhuman.rxfirebase2:firebase-database:16.0.1.0'
-//    implementation 'com.google.firebase:firebase-database:16.0.2'
-//
-//// required dependency: firebase-core
-//    implementation 'com.androidhuman.rxfirebase2:firebase-core:16.0.3.0'
-//    implementation 'com.google.firebase:firebase-core:16.0.3'
 
-// required dependency: rxjava2
     // beauty dialog
     implementation 'com.github.thomper:sweet-alert-dialog:v1.4.0'
 

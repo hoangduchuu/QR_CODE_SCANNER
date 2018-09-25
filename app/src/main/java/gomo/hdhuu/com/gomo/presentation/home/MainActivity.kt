@@ -22,7 +22,6 @@ class MainActivity : AppCompatActivity() {
         val viewModel = binding.vm
 
         Timer().schedule(3000) {
-            Log.e("start", "statr")
             viewModel!!.text.set("huuhoang deprzai vui tinh")
             viewModel.age.set(111)
             viewModel.buttonVisible.set(false)

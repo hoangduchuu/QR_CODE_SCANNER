@@ -32,7 +32,6 @@ class LoginActivity : BaseActivity(), LoginContract.View {
 
 
     override fun gotoMainPage() {
-        Toast.makeText(applicationContext, "xxx", Toast.LENGTH_LONG).show()
         val intent = Intent(this, HomeActivity::class.java)
         startActivity(intent)
         finish()
