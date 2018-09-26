@@ -33,6 +33,12 @@ constructor() : LoginContract.Presenter {
     @Inject
     lateinit var checkLogin: CheckLoginUsacase
 
+    /**
+     * @view is view of activity
+     */
+    @Inject
+    lateinit var view: LoginContract.View
+
     override fun checkUserLogged() {
         if (checkLogin.buildUseCaseObservable()) {
             gotoMainPage()
@@ -47,8 +53,7 @@ constructor() : LoginContract.Presenter {
 
     @Inject
     lateinit var viewModel: LoginViewModel
-    @Inject
-    lateinit var view: LoginContract.View
+
 
     @SuppressLint("CheckResult")
     override fun doLogin(userName: String, password: String) {
