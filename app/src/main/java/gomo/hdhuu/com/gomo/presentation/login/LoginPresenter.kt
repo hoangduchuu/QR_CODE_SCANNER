@@ -18,7 +18,6 @@ import javax.inject.Named
 class LoginPresenter
 @Inject
 constructor(@param:Named(MAIN_API) private val login: LoginUsacase<AccountParams, AuthResult>,
-            private val rating: RatingUsecase<RatingParams, String>,
             private val checkLogin: CheckLoginUsacase) : LoginContract.Presenter {
     override fun checkUserLogged() {
         if (checkLogin.buildUseCaseObservable()) {
@@ -30,7 +29,6 @@ constructor(@param:Named(MAIN_API) private val login: LoginUsacase<AccountParams
         view.gotoMainPage()
     }
 
-    val r = Random();
     val TAG = this.javaClass.simpleName
 
     @Inject
@@ -40,6 +38,7 @@ constructor(@param:Named(MAIN_API) private val login: LoginUsacase<AccountParams
 
     @SuppressLint("CheckResult")
     override fun doLogin(userName: String, password: String) {
+
         view.showLoading()
         viewModel.status.set("loading")
         login.buildUseCaseObservable(AccountParams(userName, password))
