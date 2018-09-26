@@ -14,9 +14,20 @@ import javax.inject.Named
 @SuppressLint("CheckResult")
 class RegisterPresenter
 @Inject
-constructor(@param:Named(MAIN_API) private val useCase: RegisterUsecase<AccountParams, AuthResult>) : RegisterContract.Persenter {
+constructor() : RegisterContract.Persenter {
+    /**
+     * @view is Fragment View
+     */
     @Inject
     lateinit var view: RegisterContract.View
+
+    /**
+     * @usecase is implementation of RegisterUsecase
+     */
+
+    @Inject
+    @field:Named(MAIN_API)
+    lateinit var useCase: RegisterUsecase<AccountParams, AuthResult>
 
     override fun register(user: String, password: String) {
         view.showLoading()

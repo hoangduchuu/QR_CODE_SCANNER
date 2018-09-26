@@ -2,6 +2,8 @@ package gomo.hdhuu.com.gomo.presentation.login
 
 import android.annotation.SuppressLint
 import com.google.firebase.auth.AuthResult
+import com.google.firebase.database.DatabaseReference
+import gomo.hdhuu.com.gomo.R.string.login
 import gomo.hdhuu.com.gomo.business.accouting.AccountParams
 import gomo.hdhuu.com.gomo.business.accouting.checkUserlogin.CheckLoginUsacase
 import gomo.hdhuu.com.gomo.business.accouting.login.LoginUsacase
@@ -17,8 +19,20 @@ import javax.inject.Named
  */
 class LoginPresenter
 @Inject
-constructor(@param:Named(MAIN_API) private val login: LoginUsacase<AccountParams, AuthResult>,
-            private val checkLogin: CheckLoginUsacase) : LoginContract.Presenter {
+constructor() : LoginContract.Presenter {
+    /**
+     * @login is implementation of @LoginUsecae
+     */
+    @Inject
+    @field:Named(MAIN_API)
+    lateinit var login: LoginUsacase<AccountParams, AuthResult>
+
+    /**
+     * @checkLogin is implementation of @CheckLoginUsacase
+     */
+    @Inject
+    lateinit var checkLogin: CheckLoginUsacase
+
     override fun checkUserLogged() {
         if (checkLogin.buildUseCaseObservable()) {
             gotoMainPage()
