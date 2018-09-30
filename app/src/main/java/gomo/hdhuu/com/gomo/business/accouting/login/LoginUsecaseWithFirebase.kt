@@ -13,7 +13,7 @@ import javax.inject.Inject
 /**
  * Created by hoangduchuuvn@gmail.com on 9/22/18 .
  */
-class LoginUsecaseWithFirebase @Inject constructor() : BaseFirebase(), LoginUsacase<AccountParams, AuthResult> {
+open class LoginUsecaseWithFirebase @Inject constructor() : BaseFirebase(), LoginUsacase<AccountParams, AuthResult> {
     override fun buildUseCaseObservable(params: AccountParams): Observable<AuthResult> {
         return RxFirebaseAuth.signInWithEmailAndPassword(mAuth, params.email, params.password)
                 .toObservable()

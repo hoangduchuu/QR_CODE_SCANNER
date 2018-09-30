@@ -1,5 +1,6 @@
 package gomo.hdhuu.com.gomo.presentation.login
 
+import android.accounts.Account
 import android.annotation.SuppressLint
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.database.DatabaseReference
@@ -7,6 +8,7 @@ import gomo.hdhuu.com.gomo.R.string.login
 import gomo.hdhuu.com.gomo.business.accouting.AccountParams
 import gomo.hdhuu.com.gomo.business.accouting.checkUserlogin.CheckLoginUsacase
 import gomo.hdhuu.com.gomo.business.accouting.login.LoginUsacase
+import gomo.hdhuu.com.gomo.business.accouting.login.LoginUsecaseWithFirebase
 import gomo.hdhuu.com.gomo.business.sample.RatingParams
 import gomo.hdhuu.com.gomo.business.sample.RatingUsecase
 import gomo.hdhuu.com.gomo.utils.MAIN_API
@@ -17,15 +19,15 @@ import javax.inject.Named
 /**
  * Created by hoangduchuuvn@gmail.com on 9/22/18 .
  */
-class LoginPresenter
+open class LoginPresenter
 @Inject
 constructor() : LoginContract.Presenter {
     /**
      * @login is implementation of @LoginUsecae
      */
     @Inject
-    @field:Named(MAIN_API)
-    lateinit var login: LoginUsacase<AccountParams, AuthResult>
+    //@field:Named(MAIN_API)
+     lateinit var login: LoginUsacase<AccountParams, AuthResult>
 
     /**
      * @checkLogin is implementation of @CheckLoginUsacase
@@ -54,23 +56,23 @@ constructor() : LoginContract.Presenter {
     @Inject
     lateinit var viewModel: LoginViewModel
 
+    var params : AccountParams? = null
 
     @SuppressLint("CheckResult")
     override fun doLogin(userName: String, password: String) {
-
         view.showLoading()
-        viewModel.status.set("loading")
-        login.buildUseCaseObservable(AccountParams(userName, password))
+        //viewModel.status.set("loading")
+        login.buildUseCaseObservable(params!!)
                 .doFinally {
                 }
                 .subscribe(
                         { it ->
-                            viewModel.status.set("OKKKK")
+                            //viewModel.status.set("OKKKK")
                             view.hideLoading()
                             view.gotoMainPage()
                         }
                         , { throwables ->
-                    viewModel.status.set(throwables.localizedMessage)
+                    //viewModel.status.set(throwables.localizedMessage)
                     view.onLoginErrors(throwables.localizedMessage)
 
                 }
