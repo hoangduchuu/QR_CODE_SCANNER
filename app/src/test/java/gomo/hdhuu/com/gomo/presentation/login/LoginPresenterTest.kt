@@ -63,27 +63,40 @@ class LoginPresenterTest {
         presenter.login = mockLogin
         presenter.view = view
 
-
-        var throwables = Throwable("abac")
-
-        var param = AccountParams("abc", "abc")
-
-        `when`(mockLogin.buildUseCaseObservable(param))
-                .thenReturn(Observable.error(throwables))
+        `when`(mockLogin.buildUseCaseObservable(AccountParams("abc","abc")))
+                .thenReturn(Observable.just(result))
         //when
-        presenter.params = param
         presenter.doLogin("abc", "abc")
 
 
         //verify
         verify(view).showLoading()
-        //error
-        verify(view).onLoginErrors(throwables.localizedMessage)
-        //success
         verify(view).hideLoading()
         verify(view).gotoMainPage()
+    }
+
+    @Test
+    fun whenLloginFailed() {
+
+        val presenter: LoginPresenter = LoginPresenter()
+
+        var mockLogin: LoginUsacase<AccountParams, AuthResult> = mock(LoginUsecaseWithFirebase::class.java)
+        var view: LoginContract.View = mock(LoginContract.View::class.java)
+        presenter.login = mockLogin
+        presenter.view = view
 
 
+        var throwables = Throwable("abac")
+
+        `when`(mockLogin.buildUseCaseObservable(AccountParams("abc","abc")))
+                .thenReturn(Observable.error(throwables))
+        //when
+        presenter.doLogin("abc", "abc")
+
+
+        //verify
+        verify(view).showLoading()
+        verify(view).onLoginErrors(throwables.localizedMessage)
 
     }
 

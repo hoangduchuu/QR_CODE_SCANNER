@@ -56,13 +56,12 @@ constructor() : LoginContract.Presenter {
     @Inject
     lateinit var viewModel: LoginViewModel
 
-    var params : AccountParams? = null
 
     @SuppressLint("CheckResult")
     override fun doLogin(userName: String, password: String) {
         view.showLoading()
         //viewModel.status.set("loading")
-        login.buildUseCaseObservable(params!!)
+        login.buildUseCaseObservable(AccountParams(userName, password))
                 .doFinally {
                 }
                 .subscribe(
