@@ -12,10 +12,10 @@ import javax.inject.Singleton
  */
 interface ApplicationDI {
     @Singleton
-    @dagger.Component(modules = arrayOf(Module::class))
+    @dagger.Component(modules = arrayOf(ApplicationDI.Module::class))
     interface Component {
         fun plus(module: LoginContract.Module): LoginContract.Component
-        fun plus(module: HomeContract.Module): HomeContract.Component
+        fun plus(module: UserDI.Module): UserDI.Component
 
     }
 

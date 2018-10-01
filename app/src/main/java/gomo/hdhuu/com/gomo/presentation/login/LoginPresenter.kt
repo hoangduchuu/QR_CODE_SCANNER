@@ -4,6 +4,7 @@ import android.accounts.Account
 import android.annotation.SuppressLint
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.database.DatabaseReference
+import gomo.hdhuu.com.gomo.GomoApp
 import gomo.hdhuu.com.gomo.R.string.login
 import gomo.hdhuu.com.gomo.business.accouting.AccountParams
 import gomo.hdhuu.com.gomo.business.accouting.checkUserlogin.CheckLoginUsacase
@@ -43,6 +44,7 @@ constructor() : LoginContract.Presenter {
 
     override fun checkUserLogged() {
         if (checkLogin.buildUseCaseObservable()) {
+            GomoApp.getInstance().buildUserScope(checkLogin.getAuthResult()!!)
             gotoMainPage()
         }
     }
@@ -67,6 +69,7 @@ constructor() : LoginContract.Presenter {
                 .subscribe(
                         { it ->
                             //viewModel.status.set("OKKKK")
+                            GomoApp.getInstance().buildUserScope(it.user)
                             view.hideLoading()
                             view.gotoMainPage()
                         }
