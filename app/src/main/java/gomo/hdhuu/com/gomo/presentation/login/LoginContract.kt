@@ -3,6 +3,7 @@ package gomo.hdhuu.com.gomo.presentation.login
 import com.google.firebase.auth.AuthResult
 import dagger.Provides
 import dagger.Subcomponent
+import gomo.hdhuu.com.gomo.UserProfile
 import gomo.hdhuu.com.gomo.business.accouting.AccountParams
 import gomo.hdhuu.com.gomo.business.accouting.checkUserlogin.CheckLoginUsacase
 import gomo.hdhuu.com.gomo.business.accouting.checkUserlogin.CheckLoginUsecaseWithFirebase
@@ -59,7 +60,7 @@ interface LoginContract {
         @ActivityScope
         @Provides
         @Named(USE_API_FROM_FIREBASE)
-        fun provideUsecaseWithFirebase(usecase: LoginUsecaseWithFirebase): LoginUsacase<AccountParams, AuthResult> = usecase
+        fun provideUsecaseWithFirebase(usecase: LoginUsecaseWithFirebase): LoginUsacase<AccountParams, UserProfile> = usecase
 
         @ActivityScope
         @Provides
@@ -76,7 +77,7 @@ interface LoginContract {
 
         @ActivityScope
         @Provides
-        fun providecheckUserLoginUsecae(usecas:CheckLoginUsecaseWithFirebase): CheckLoginUsacase = usecas
+        fun providecheckUserLoginUsecae(usecas: CheckLoginUsecaseWithFirebase): CheckLoginUsacase = usecas
 
     }
 

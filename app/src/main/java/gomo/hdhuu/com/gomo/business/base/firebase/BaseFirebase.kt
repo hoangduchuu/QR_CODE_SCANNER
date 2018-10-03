@@ -32,15 +32,4 @@ abstract class BaseFirebase {
         mRootDB.keepSynced(true)
     }
 
-
-    protected fun getParkingRef(ownerUuid: String, parkingUuid: String): StorageReference {
-        return rootStorageRef.child(ownerUuid).child(parkingUuid)
-    }
-
-    protected fun getParkingRef(ownerUuid: String, parkingUuid: String, fileName: String): StorageReference {
-        return rootStorageRef.child(ownerUuid).child(parkingUuid).child(fileName)
-    }
-
-
-
 }

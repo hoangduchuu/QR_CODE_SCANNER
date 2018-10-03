@@ -9,6 +9,11 @@ import butterknife.ButterKnife
  * Created by hoangduchuuvn@gmail.com on 9/22/18 .
  */
 abstract class BaseFragment : Fragment(), BaseView {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         injectDependencies()

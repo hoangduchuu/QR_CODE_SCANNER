@@ -14,7 +14,7 @@ interface OverViewContract {
     }
 
     interface Presenter {
-
+        fun getName(): String
     }
 
     @FragmentScope
@@ -37,7 +37,7 @@ interface OverViewContract {
 
         @FragmentScope
         @Provides
-        fun provideViewModel() = OverViewModel();
+        fun provideViewModel() = OverViewModel()
     }
 
 

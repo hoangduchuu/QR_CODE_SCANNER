@@ -6,6 +6,7 @@ import gomo.hdhuu.com.gomo.GomoApp
 import gomo.hdhuu.com.gomo.R
 import gomo.hdhuu.com.gomo.presentation.base.BaseActivity
 import gomo.hdhuu.com.gomo.presentation.mainfeature.OverView.OverViewFragment
+import kotlin.coroutines.experimental.EmptyCoroutineContext.plus
 
 /**
  * Created by hoangduchuuvn@gmail.com on 9/26/18 .
@@ -29,8 +30,7 @@ class HomeActivity : BaseActivity(), HomeContract.View {
      * dependencies injection
      */
     override fun injectDependencies() {
-        component = (application as GomoApp).component
-                .plus(HomeContract.Module(this))
+        component = GomoApp.getInstance().userComponent?.plus(HomeContract.Module(this))
         component?.inject(this)
     }
 
