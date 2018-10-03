@@ -3,6 +3,7 @@ package gomo.hdhuu.com.gomo.business.accouting.checkUserlogin
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import gomo.hdhuu.com.gomo.UserProfile
 import io.reactivex.Observable
 
 /**
@@ -10,6 +11,6 @@ import io.reactivex.Observable
  */
 interface CheckLoginUsacase {
     fun buildUseCaseObservable(): Boolean
-    fun getAuthResult() : FirebaseUser?
+    fun getUserProfileLogged(): UserProfile
 }
 

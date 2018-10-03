@@ -25,7 +25,7 @@ class GomoApp : Application() {
     }
 
     var userComponent : UserDI.Component? = null
-    fun buildUserScope(user: FirebaseUser) {
+    fun buildUserScope(user: UserProfile) {
         userComponent = component.plus(UserDI.Module(user))
     }
 

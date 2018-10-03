@@ -22,10 +22,10 @@ interface UserDI {
     }
 
     @dagger.Module
-    class Module(val user: FirebaseUser) {
+    class Module(val user: UserProfile) {
 
         @Provides
         @UserScope
-        fun provideUserProfile(): UserProfile = UserProfile(user.email!!)
+        fun provideUserProfile(): UserProfile = user
     }
 }

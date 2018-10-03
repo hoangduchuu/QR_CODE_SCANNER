@@ -6,6 +6,7 @@ import com.google.firebase.auth.AuthResult
 import com.google.firebase.database.DatabaseReference
 import gomo.hdhuu.com.gomo.GomoApp
 import gomo.hdhuu.com.gomo.R.string.login
+import gomo.hdhuu.com.gomo.UserProfile
 import gomo.hdhuu.com.gomo.business.accouting.AccountParams
 import gomo.hdhuu.com.gomo.business.accouting.checkUserlogin.CheckLoginUsacase
 import gomo.hdhuu.com.gomo.business.accouting.login.LoginUsacase
@@ -28,7 +29,7 @@ constructor() : LoginContract.Presenter {
      */
     @Inject
     @field:Named(MAIN_API)
-    lateinit var login: LoginUsacase<AccountParams, AuthResult>
+    lateinit var login: LoginUsacase<AccountParams, UserProfile>
 
     /**
      * @checkLogin is implementation of @CheckLoginUsacase
@@ -44,7 +45,7 @@ constructor() : LoginContract.Presenter {
 
     override fun checkUserLogged() {
         if (checkLogin.buildUseCaseObservable()) {
-            GomoApp.getInstance().buildUserScope(checkLogin.getAuthResult()!!)
+            GomoApp.getInstance().buildUserScope(checkLogin.getUserProfileLogged())
             gotoMainPage()
         }
     }
@@ -66,15 +67,23 @@ constructor() : LoginContract.Presenter {
         login.buildUseCaseObservable(AccountParams(userName, password))
                 .doFinally {
                 }
+                .doOnNext {
+                    viewModel.status.set("OKKKK222")
+                    GomoApp.getInstance().buildUserScope(it)
+                    view.hideLoading()
+                }
+                .doOnError {
+                    viewModel.status.set(it.localizedMessage + " ok")
+                }
                 .subscribe(
                         { it ->
-                            viewModel.status.set("OKKKK")
-                            GomoApp.getInstance().buildUserScope(it.user)
-                            view.hideLoading()
+                            viewModel.status.set("OKKK111K2")
                             view.gotoMainPage()
+
+//                            view.gotoMainPage()
                         }
                         , { throwables ->
-                    viewModel.status.set(throwables.localizedMessage)
+                    //viewModel.status.set(throwables.localizedMessage)
                     view.onLoginErrors(throwables.localizedMessage)
 
                 }
