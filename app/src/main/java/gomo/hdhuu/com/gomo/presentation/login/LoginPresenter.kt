@@ -68,13 +68,13 @@ constructor() : LoginContract.Presenter {
                 }
                 .subscribe(
                         { it ->
-                            //viewModel.status.set("OKKKK")
+                            viewModel.status.set("OKKKK")
                             GomoApp.getInstance().buildUserScope(it.user)
                             view.hideLoading()
                             view.gotoMainPage()
                         }
                         , { throwables ->
-                    //viewModel.status.set(throwables.localizedMessage)
+                    viewModel.status.set(throwables.localizedMessage)
                     view.onLoginErrors(throwables.localizedMessage)
 
                 }
