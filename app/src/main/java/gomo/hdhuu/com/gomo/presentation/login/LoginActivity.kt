@@ -32,7 +32,7 @@ class LoginActivity : BaseActivity(), LoginContract.View {
 
 
     override fun gotoMainPage() {
-        val intent = Intent(this, HomeActivity::class.java)
+        val intent = Intent(    this, HomeActivity::class.java)
         startActivity(intent)
         finish()
 
@@ -64,7 +64,7 @@ class LoginActivity : BaseActivity(), LoginContract.View {
     }
 
     override fun injectDependencies() {
-        component = (application as GomoApp).component
+        component = (application as GomoApp).appComponent
                 .plus(LoginContract.Module(this))
         component?.inject(this)
         mBinding?.vm = mViewModel

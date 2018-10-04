@@ -12,33 +12,49 @@ import gomo.hdhuu.com.gomo.di.UserDI
  * Created by hoangduchuuvn@gmail.com on 9/22/18 .
  */
 class GomoApp : Application() {
-    lateinit var component: ApplicationDI.Component
-
+    lateinit var appComponent: ApplicationDI.Component
+    lateinit var userComponent: UserDI.Component
 
 
     override fun onCreate() {
         super.onCreate()
         instance = this
-        component = DaggerApplicationDI_Component.builder()
+        appComponent = DaggerApplicationDI_Component.builder()
                 .module(ApplicationDI.Module(this))
                 .build()
     }
 
-    var userComponent : UserDI.Component? = null
+    /**
+     * build any what Module inside UserComponent scope need to use like:
+     * - UserProfile (logged)
+     *
+     * We use this function when the user logged success or user state is logged before
+     * to PROVIDE ONLY-AND-ONLY-ONE UserProfile instance in the WHOLE application
+     */
     fun buildUserScope(user: UserProfile) {
-        userComponent = component.plus(UserDI.Module(user))
+        userComponent = appComponent.plus(UserDI.Module(user))
     }
+
 
     companion object {
         @Volatile
         private lateinit var instance: GomoApp
 
-        fun getInstance(): GomoApp{
+        /**
+         * @return this GomoApp instance
+         */
+
+        fun getInstance(): GomoApp {
             return instance
         }
+
+        /**
+         * @return the userComponent
+         */
+        fun getUserComponent(): UserDI.Component {
+            return getInstance().userComponent
+        }
     }
-
-
 
 
 }

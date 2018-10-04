@@ -37,7 +37,7 @@ class OverViewFragment : BaseFragment(), OverViewContract.View {
 
     override fun injectDependencies() {
         if (activity is HomeActivity) {
-            (activity as HomeActivity).component
+            (activity as HomeActivity).homeComponent
                     ?.plus(OverViewContract.Module(this))
                     ?.inject(this)
 

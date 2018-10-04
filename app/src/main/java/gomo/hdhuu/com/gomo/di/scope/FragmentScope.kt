@@ -1,4 +1,4 @@
-package gomo.hdhuu.com.gomo.di
+package gomo.hdhuu.com.gomo.di.scope
 
 import javax.inject.Scope
 
@@ -7,4 +7,4 @@ import javax.inject.Scope
  */
 @Scope
 @Retention(AnnotationRetention.RUNTIME)
-annotation class ActivityScope
+annotation class FragmentScope

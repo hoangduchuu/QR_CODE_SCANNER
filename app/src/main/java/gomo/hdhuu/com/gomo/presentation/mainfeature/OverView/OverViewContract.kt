@@ -2,7 +2,7 @@ package gomo.hdhuu.com.gomo.presentation.mainfeature.OverView
 
 import dagger.Provides
 import dagger.Subcomponent
-import gomo.hdhuu.com.gomo.di.FragmentScope
+import gomo.hdhuu.com.gomo.di.scope.FragmentScope
 
 
 /**

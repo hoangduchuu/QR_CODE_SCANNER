@@ -15,7 +15,7 @@ class HomeActivity : BaseActivity(), HomeContract.View {
     /**
      * the Home component
      */
-    var component: HomeContract.Component? = null
+    var homeComponent: HomeContract.Component? = null
 
 
     /**
@@ -30,8 +30,11 @@ class HomeActivity : BaseActivity(), HomeContract.View {
      * dependencies injection
      */
     override fun injectDependencies() {
-        component = GomoApp.getInstance().userComponent?.plus(HomeContract.Module(this))
-        component?.inject(this)
+        homeComponent = GomoApp
+                .getUserComponent()
+                .plus(HomeContract.Module(this))
+
+        homeComponent?.inject(this)
     }
 
     /**

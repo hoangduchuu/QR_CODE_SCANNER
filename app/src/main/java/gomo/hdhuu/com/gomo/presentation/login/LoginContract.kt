@@ -1,6 +1,5 @@
 package gomo.hdhuu.com.gomo.presentation.login
 
-import com.google.firebase.auth.AuthResult
 import dagger.Provides
 import dagger.Subcomponent
 import gomo.hdhuu.com.gomo.UserProfile
@@ -13,7 +12,7 @@ import gomo.hdhuu.com.gomo.business.accouting.login.LoginUsecaseWithHttp
 import gomo.hdhuu.com.gomo.business.sample.RatingParams
 import gomo.hdhuu.com.gomo.business.sample.RatingUsecase
 import gomo.hdhuu.com.gomo.business.sample.RatingUsecaseWithFirebase
-import gomo.hdhuu.com.gomo.di.ActivityScope
+import gomo.hdhuu.com.gomo.di.scope.ActivityScope
 import gomo.hdhuu.com.gomo.presentation.base.BasePresenter
 import gomo.hdhuu.com.gomo.presentation.base.BaseView
 import gomo.hdhuu.com.gomo.presentation.login.register.RegisterContract

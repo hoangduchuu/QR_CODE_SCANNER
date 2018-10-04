@@ -6,7 +6,7 @@ import dagger.Subcomponent
 import gomo.hdhuu.com.gomo.business.accouting.AccountParams
 import gomo.hdhuu.com.gomo.business.accouting.register.RegisterUsecase
 import gomo.hdhuu.com.gomo.business.accouting.register.RegisterUsecaseWithFirebase
-import gomo.hdhuu.com.gomo.di.FragmentScope
+import gomo.hdhuu.com.gomo.di.scope.FragmentScope
 import gomo.hdhuu.com.gomo.presentation.base.BaseView
 import gomo.hdhuu.com.gomo.utils.USE_API_FROM_FIREBASE
 import javax.inject.Named
