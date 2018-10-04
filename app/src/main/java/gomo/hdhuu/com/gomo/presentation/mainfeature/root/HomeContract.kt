@@ -10,10 +10,12 @@ import gomo.hdhuu.com.gomo.presentation.mainfeature.OverView.OverViewContract
  */
 interface HomeContract {
     interface View {
+        fun openLoginScreen()
 
     }
 
     interface Presenter {
+        fun logout()
 
     }
 
