@@ -32,4 +32,6 @@ abstract class BaseFirebase {
         mRootDB.keepSynced(true)
     }
 
+    fun getLoggedUUid() = mAuth.currentUser?.uid
+
 }
