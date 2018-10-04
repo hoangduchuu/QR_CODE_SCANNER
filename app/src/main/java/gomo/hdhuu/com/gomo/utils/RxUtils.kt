@@ -1,6 +1,7 @@
 package gomo.hdhuu.com.gomo.utils
 
 import io.reactivex.Flowable
+import io.reactivex.Maybe
 import io.reactivex.Observable
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -25,3 +26,8 @@ fun <T, R> biFunction(function: (T, R) -> T): BiFunction<T, R, T> = BiFunction(f
 fun <T> Observable<T>.bindSchedulers(): Observable<T> = this
         .subscribeOn(Schedulers.io())
         .observeOn(AndroidSchedulers.mainThread())
+
+fun <T> Maybe<T>.bindSchedulers(): Maybe<T> = this
+        .subscribeOn(Schedulers.io())
+        .observeOn(AndroidSchedulers.mainThread())
+
