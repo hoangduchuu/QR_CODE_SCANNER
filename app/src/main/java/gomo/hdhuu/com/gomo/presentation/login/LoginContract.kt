@@ -12,6 +12,8 @@ import gomo.hdhuu.com.gomo.business.accouting.login.LoginUsecaseWithHttp
 import gomo.hdhuu.com.gomo.business.sample.RatingParams
 import gomo.hdhuu.com.gomo.business.sample.RatingUsecase
 import gomo.hdhuu.com.gomo.business.sample.RatingUsecaseWithFirebase
+import gomo.hdhuu.com.gomo.business.upload.ImageUploadUsecase
+import gomo.hdhuu.com.gomo.business.upload.ImageUploadUsecaseWithFirebase
 import gomo.hdhuu.com.gomo.di.scope.ActivityScope
 import gomo.hdhuu.com.gomo.presentation.base.BasePresenter
 import gomo.hdhuu.com.gomo.presentation.base.BaseView
@@ -77,6 +79,10 @@ interface LoginContract {
         @ActivityScope
         @Provides
         fun providecheckUserLoginUsecae(usecas: CheckLoginUsecaseWithFirebase): CheckLoginUsacase = usecas
+
+        @ActivityScope
+        @Provides
+        fun providetEST(u: ImageUploadUsecaseWithFirebase): ImageUploadUsecase = u
 
     }
 
