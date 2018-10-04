@@ -14,7 +14,7 @@ import javax.inject.Inject
 /**
  * Created by hoangduchuuvn@gmail.com on 9/22/18 .
  */
-open class LoginUsecaseWithFirebase @Inject constructor() : BaseFirebase(), LoginUsacase<AccountParams, UserProfile> {
+open class LoginUsecaseWithFirebase @Inject constructor() : BaseFirebase(), LoginUsacase {
     override fun buildUseCaseObservable(params: AccountParams): Observable<UserProfile> {
         return Observable.create { emmiter ->
             RxFirebaseAuth

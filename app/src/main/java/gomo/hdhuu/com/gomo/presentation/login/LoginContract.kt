@@ -61,12 +61,12 @@ interface LoginContract {
         @ActivityScope
         @Provides
         @Named(USE_API_FROM_FIREBASE)
-        fun provideUsecaseWithFirebase(usecase: LoginUsecaseWithFirebase): LoginUsacase<AccountParams, UserProfile> = usecase
+        fun provideUsecaseWithFirebase(usecase: LoginUsecaseWithFirebase): LoginUsacase = usecase
 
         @ActivityScope
         @Provides
         @Named(USE_API_FROM_HTTP)
-        fun provideUsecaseWithHttp(usecase: LoginUsecaseWithHttp): LoginUsacase<AccountParams, String> = usecase
+        fun provideUsecaseWithHttp(usecase: LoginUsecaseWithHttp): LoginUsacase = usecase
 
         @ActivityScope
         @Provides

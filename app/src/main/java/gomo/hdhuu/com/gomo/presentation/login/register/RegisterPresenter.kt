@@ -27,7 +27,7 @@ constructor() : RegisterContract.Persenter {
 
     @Inject
     @field:Named(MAIN_API)
-    lateinit var useCase: RegisterUsecase<AccountParams, AuthResult>
+    lateinit var useCase: RegisterUsecase
 
     override fun register(user: String, password: String) {
         view.showLoading()
