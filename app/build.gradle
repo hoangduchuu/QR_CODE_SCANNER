@@ -93,6 +93,11 @@ dependencies {
     // camera library
     implementation 'com.wonderkiln:camerakit:0.13.1'
 
+    // noAdapter@tiki
+
+    implementation 'vn.tiki.noadapter2:noadapter-databinding:2.0.2'
+
+
 
 
 }
