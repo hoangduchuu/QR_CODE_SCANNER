@@ -29,7 +29,7 @@ constructor() : LoginContract.Presenter {
      */
     @Inject
     @field:Named(MAIN_API)
-    lateinit var login: LoginUsacase<AccountParams, UserProfile>
+    lateinit var login: LoginUsacase
 
     /**
      * @checkLogin is implementation of @CheckLoginUsacase

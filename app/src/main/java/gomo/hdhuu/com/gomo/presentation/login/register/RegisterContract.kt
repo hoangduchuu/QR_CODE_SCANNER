@@ -46,6 +46,6 @@ interface RegisterContract {
         @FragmentScope
         @Provides
         @Named(USE_API_FROM_FIREBASE)
-        fun provideUsecase(usecase: RegisterUsecaseWithFirebase): RegisterUsecase<AccountParams, AuthResult> = usecase
+        fun provideUsecase(usecase: RegisterUsecaseWithFirebase): RegisterUsecase = usecase
     }
 }

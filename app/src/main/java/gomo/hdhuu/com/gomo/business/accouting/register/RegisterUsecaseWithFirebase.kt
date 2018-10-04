@@ -12,7 +12,7 @@ import javax.inject.Inject
  * Created by hoangduchuuvn@gmail.com on 9/26/18 .
  */
 class RegisterUsecaseWithFirebase @Inject
-constructor() : BaseFirebase(), RegisterUsecase<AccountParams, AuthResult> {
+constructor() : BaseFirebase(), RegisterUsecase {
     override fun buildUseCaseObservable(params: AccountParams): Observable<AuthResult> {
         return RxFirebaseAuth.createUserWithEmailAndPassword(mAuth, params.email, params.password)
                 .toObservable()
