@@ -26,6 +26,7 @@ import vn.tiki.noadapter2.DiffCallback
 import gomo.hdhuu.com.gomo.presentation.home.MainActivity
 import android.databinding.ViewDataBinding
 import android.support.v4.app.FragmentActivity
+import android.system.Os.remove
 import android.util.Log
 import android.view.View
 import vn.tiki.noadapter2.OnItemClickListener
@@ -78,6 +79,7 @@ class LoginActivity : BaseActivity(), LoginContract.View {
         btAdd.setOnClickListener { addItem() }
         btClear.setOnClickListener { clearItems() }
         btChange.setOnClickListener { shuffleItems() }
+        btClear.setOnLongClickListener({v-> removez()})
 
         val rvList = this.findViewById(R.id.rvList) as RecyclerView
 
@@ -110,7 +112,7 @@ class LoginActivity : BaseActivity(), LoginContract.View {
                 .diffCallback(object : DiffCallback {
                     override fun areItemsTheSame(oldItem: Any, newItem: Any): Boolean {
                         return if (oldItem is Color) {
-                            newItem is Color && oldItem.id === newItem.id
+                            !(newItem !is Color || oldItem.id !== newItem.id)
                         } else {
                             oldItem == newItem
                         }
@@ -129,9 +131,16 @@ class LoginActivity : BaseActivity(), LoginContract.View {
 
     }
 
+    private fun removez(): Boolean {
+        items.removeAt(2)
+        adapter?.setItems(items)
+        return true
+    }
+
     private fun cloneItems(): ArrayList<String> {
         val l = arrayListOf<String>("zz")
         for (z in 1..20) {
+            z + 1
             l.add("xxkaka $z")
         }
         return l
@@ -147,8 +156,10 @@ class LoginActivity : BaseActivity(), LoginContract.View {
         adapter?.setItems(items)
     }
 
+    var x = 1
     private fun addItem() {
-        items.add("xxxx")
+        x++
+        items.add(1, "xxxx ${x}" )
         adapter?.setItems(items);
     }
 
@@ -156,7 +167,7 @@ class LoginActivity : BaseActivity(), LoginContract.View {
     private fun randomItem(i: Int): Any {
         val item: Any
         if (i % 3 == 0) {
-            item = "Text #$i"
+            item = "Text $i"
         } else {
             item = Color(i, randomColor())
         }
